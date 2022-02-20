@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>{{titulo}}</title>
-</head>
-<body>
-    <h1>Sistema de administracion de personas</h1>
-    <h3>{{titulo}}</h3>
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{titulo}}{% endblock title %}
+
+{% block contenedor %}
+<h2>Esta es la Pag principal de la practica</h2>
+
+<a href="{% url 'app_RRHH:rrhhhome' %}">Paguina de RRHH</a>
+{% endblock contenedor %}

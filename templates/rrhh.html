@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+{% block contenedor %}
+<h3>Cantidad de Empleados activos {{ contar }}</h3><br>
+
+<a href="{% url 'home' %}" >Volver</a>
+
+{% endblock contenedor %}
