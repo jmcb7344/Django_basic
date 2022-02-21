@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}{{title}}{% endblock title %}
+
+{% block contenedor %}
+<div class="contenedor ">
+    <h3 border-bottom>Persona: {{ object.nombre }} {{object.apellido}}</h3><br>
+    <h3>DNI: {{object.dni}}</h3><br>
+    <h3>Sexo: {{object.sexo}}</h3><br>
+    <h3>Fecha de Nac: {{object.fec_nac}}</h3><br>
+    {% if active %}
+    <h3>No es Empleado</h3><br>
+    {% else %}
+    <h3>Empleado Activo</h3><br>
+    <h3>{{object.puesto}}</h3><br>
+    <h3>Fecha de Ingreso: {{object.fec_ing}}</h3><br>
+    {% endif %}
+
+    <a class="btn btn-primary" href="{% url 'app_RRHH:rrhhhome' %}" >Volver</a>
+    <a class="btn btn-primary" href="{% url 'app_RRHH:rrhhhome' %}" >Editar</a>
+    <a class="btn btn-primary" href="{% url 'app_RRHH:rrhhhome' %}" >Eliminar</a>
+</div>
+
+
+{% endblock contenedor %}

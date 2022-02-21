@@ -4,8 +4,48 @@
 {% block title %}{{ title }}{% endblock title %}
 
 {% block contenedor %}
-<h3>Cantidad de Empleados activos {{ contar }}</h3><br>
+<ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <h4>Total de empleados de Empleados:</h4>
+        <span class="badge bg-primary rounded-pill">{{ contar }}</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <h4>Empleados Activos:</h4>
+        <span class="badge bg-primary rounded-pill">{{ activo }}</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <h4>Empleados No-Activos:</h4>
+        <span class="badge bg-primary rounded-pill">{{ noactv }}</span>
+    </li>
+</ul>
+<br>
+<table class="table table-hover">
+    <thead>
+        <tr class="table-dark">
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Activo?</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for persona in empleado %}
+        <tr>
+            <th scope="row">{{ persona.id }}</th>
+            <td>{{ persona.nombre }}</td>
+            <td>{{ persona.apellido }}</td>
+            <td>{{ persona.activo }}</td>
+            <td><a class="btn btn-outline-primary" href="{% url 'app_RRHH:detalle' persona.id %}">Detalle</a></td>
+            <td><a class="btn btn-outline-primary" href="#">Editar</a></td>
+            <td><a class="btn btn-outline-primary" href="#">Eliminar</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
-<a href="{% url 'home' %}" >Volver</a>
+<a class="btn btn-outline-primary me-2" href="{% url 'home' %}">Volver</a>
 
 {% endblock contenedor %}
