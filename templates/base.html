@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+<header>
+    <div class="header">
+        <h2>Sistema de Administracion de Empleados</h2>
+    </div>
+</header>
+<article>
+    {% block contenedor %}
+    
+    {% endblock contenedor %}
+</article>
+{% include 'footer.html' %}
+</body>
+</html>

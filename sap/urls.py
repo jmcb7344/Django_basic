@@ -19,6 +19,6 @@ from sap import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('rrhh', include('app_RRHH.urls')),
-    path('', views.HomeView.as_view())
+    path('rrhh/', include('app_RRHH.urls', namespace='app_RRHH')),
+    path('', views.HomeView.as_view(), name='home')
 ]

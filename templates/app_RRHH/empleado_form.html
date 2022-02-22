@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block contenedor %}
+<div class="contenedor ">
+    <form method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-primary" type="submit" value="Save">
+        <a class="btn btn-primary" href="{% url 'app_RRHH:rrhhhome' %}" >Volver</a>
+    </form>
+</div>
+{% endblock contenedor %}
