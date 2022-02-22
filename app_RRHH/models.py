@@ -10,6 +10,7 @@ class PuestoLaboral(models.Model):
         ('A','Administracion'),
         ('E','Expedicion'),
         ('T','Tecnica'),
+        ('x','Postulante'),
     )
     area_laboral = models.CharField(max_length=1, choices=PROCESO_CHOICES)
     puesto_laboral = models.CharField(max_length=30)
@@ -28,8 +29,8 @@ class Empleado(models.Model):
     dni = models.CharField(max_length=8, verbose_name='DNI')
     sexo = models.CharField(max_length=1, choices=SEXO_CHOICES)
     fec_nac = models.DateField(verbose_name='fecha nacimiento')
-    puesto = models.OneToOneField(PuestoLaboral, on_delete=models.CASCADE)
-    fec_ing = models.DateField(verbose_name='fecha ingreso')
+    puesto = models.ForeignKey(PuestoLaboral, on_delete=models.CASCADE, null=False, blank=True)
+    fec_ing = models.DateField(verbose_name='fecha ingreso', null=False, blank=True)
     activo = models.BooleanField(default=False, verbose_name='Empleado activo?')
     
     def __str__(self):

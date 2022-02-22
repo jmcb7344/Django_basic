@@ -17,8 +17,8 @@
     {% endif %}
 
     <a class="btn btn-primary" href="{% url 'app_RRHH:rrhhhome' %}" >Volver</a>
-    <a class="btn btn-primary" href="{% url 'app_RRHH:rrhhhome' %}" >Editar</a>
-    <a class="btn btn-primary" href="{% url 'app_RRHH:rrhhhome' %}" >Eliminar</a>
+    <a class="btn btn-primary" href="{% url 'app_RRHH:editar' object.id %}" >Editar</a>
+    <a class="btn btn-primary" href="{% url 'app_RRHH:delete' object.id %}" >Eliminar</a>
 </div>
 
 

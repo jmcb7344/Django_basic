@@ -4,6 +4,41 @@
 {% block title %}{{ title }}{% endblock title %}
 
 {% block contenedor %}
+<td><a class="btn btn-outline-primary" href="{% url 'app_RRHH:create' %}">Crear Persona</a></td>
+<br>
+<table class="table table-hover">
+    <thead>
+        <tr class="table-dark">
+            <th scope="col">Id</th>
+            <th scope="col">Nombre y Apellido</th>
+            <th scope="col">Sexo</th>
+            <th scope="col">Activo en Planta?</th>
+            <th scope="col">Puesto</th>
+            <th scope="col">Ingreso</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for empleado in empleado %}
+        <tr>
+            <td scope="row">{{ empleado.id }}</td>
+            <td>{{ empleado.nombre }} {{ empleado.apellido }}</td>
+            <td>{{ empleado.sexo }}</td>
+            <td>{{ empleado.activo }}</td>
+            <td>{{ empleado.puesto }}</td>
+            <td>{{ empleado.fec_ing }}</td>
+            <td><a class="btn btn-outline-primary" href="{% url 'app_RRHH:detalle' empleado.id %}">Detalle</a></td>
+            <td><a class="btn btn-outline-primary" href="{% url 'app_RRHH:editar' empleado.id %}">Editar</a></td>
+            <td><a class="btn btn-outline-primary" href="{% url 'app_RRHH:delete' empleado.id %}">Eliminar</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+    
+<a class="btn btn-outline-primary me-2" href="{% url 'home' %}">Volver</a>
+
 <ul class="list-group">
     <li class="list-group-item d-flex justify-content-between align-items-center">
         <h4>Total de empleados de Empleados:</h4>
@@ -18,34 +53,4 @@
         <span class="badge bg-primary rounded-pill">{{ noactv }}</span>
     </li>
 </ul>
-<br>
-<table class="table table-hover">
-    <thead>
-        <tr class="table-dark">
-            <th scope="col">Id</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Apellido</th>
-            <th scope="col">Activo?</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for persona in empleado %}
-        <tr>
-            <th scope="row">{{ persona.id }}</th>
-            <td>{{ persona.nombre }}</td>
-            <td>{{ persona.apellido }}</td>
-            <td>{{ persona.activo }}</td>
-            <td><a class="btn btn-outline-primary" href="{% url 'app_RRHH:detalle' persona.id %}">Detalle</a></td>
-            <td><a class="btn btn-outline-primary" href="#">Editar</a></td>
-            <td><a class="btn btn-outline-primary" href="#">Eliminar</a></td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
-<a class="btn btn-outline-primary me-2" href="{% url 'home' %}">Volver</a>
-
 {% endblock contenedor %}

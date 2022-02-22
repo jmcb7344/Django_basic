@@ -1,30 +1,49 @@
 from django.shortcuts import render
+from django.urls import reverse, reverse_lazy
 from django.views import generic
 from app_RRHH import models
 
 # Create your views here.
-class RrhhView(generic.View):
-    cont = models.Empleado.objects.count()
-    activos = models.Empleado.objects.filter(activo=True).count
-    noactv = models.Empleado.objects.filter(activo=False).count
-    empleado = models.Empleado.objects.order_by('id')
+class HomeView(generic.View):
+    title = 'Recursos Humanos'
+
     def get(self, request, *args, **kwargs):
+        activo = models.Empleado.objects.filter(activo=True).count()
+        no_activo = models.Empleado.objects.filter(activo=False).count()
+        empleado = models.Empleado.objects.all()
+        contar = models.Empleado.objects.count()
         context = {
-            'title':'RRHH',
-            'contar':self.cont,
-            'activo':self.activos,
-            'noactv':self.noactv,
-            'empleado':self.empleado,
+            'title':self.title,
+            'activo':activo, 
+            'noactivo': no_activo,
+            'empleado':empleado,
+            'contar':contar,
         }
         return render(request, 'rrhh.html', context)
+
+ 
+class CreatePersona(generic.CreateView):
+    model = models.Empleado
+    fields = "__all__"
+    
+    def get_success_url(self):
+        return reverse_lazy('app_RRHH:rrhhhome')
 
 
 class DetalleView(generic.DetailView):
     model = models.Empleado
 
-    """def get(self, request,id, *args, **kwargs):
-        empleado = self.model.objects.get(pk=id)
-        context ={
-            'persona':empleado
-        }
-        return render(request, 'detalle.html', context)"""
+
+class EditarView(generic.UpdateView):
+    model = models.Empleado
+    fields = '__all__'
+
+    def get_success_url(self):
+        return reverse_lazy('app_RRHH:rrhhhome')
+
+
+class DeleteViews(generic.DeleteView):
+    model = models.Empleado
+
+    def get_success_url(self):
+        return reverse_lazy('app_RRHH:rrhhhome')
