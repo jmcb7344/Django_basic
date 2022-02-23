@@ -31,6 +31,7 @@
             <td>{{ empleado.fec_ing }}</td>
             <td><a class="btn btn-outline-primary" href="{% url 'app_RRHH:detalle' empleado.id %}">Detalle</a></td>
             <td><a class="btn btn-outline-primary" href="{% url 'app_RRHH:editar' empleado.id %}">Editar</a></td>
+            <td><a class="btn btn-outline-primary" href="{% url 'app_RRHH:edit' empleado.id %}">Editar 2</a></td>
             <td><a class="btn btn-outline-primary" href="{% url 'app_RRHH:delete' empleado.id %}">Eliminar</a></td>
         </tr>
         {% endfor %}

@@ -9,4 +9,5 @@ urlpatterns = [
     path('create', views.CreatePersona.as_view(), name='create'),
     path('delete/<int:pk>/', views.DeleteViews.as_view(), name='delete'),
     path('editar/<int:pk>/', views.EditarView.as_view(), name='editar'),
+    path('edit/<int:id>/', views.EditView.as_view(), name='edit'),
 ]
