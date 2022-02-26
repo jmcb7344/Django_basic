@@ -14,25 +14,25 @@
             <th scope="col">Sexo</th>
             <th scope="col">Activo en Planta?</th>
             <th scope="col">Puesto</th>
-            <th scope="col">Ingreso</th>
+            <th scope="col">Edad</th>
             <th scope="col"></th>
             <th scope="col"></th>
             <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
-        {% for empleado in empleado %}
+        {% for empleados in empleado %}
         <tr>
             <td scope="row">{{ empleado.id }}</td>
-            <td>{{ empleado.nombre }} {{ empleado.apellido }}</td>
-            <td>{{ empleado.sexo }}</td>
-            <td>{{ empleado.activo }}</td>
-            <td>{{ empleado.puesto }}</td>
-            <td>{{ empleado.fec_ing }}</td>
-            <td><a class="btn btn-outline-primary" href="{% url 'app_RRHH:detalle' empleado.id %}">Detalle</a></td>
-            <td><a class="btn btn-outline-primary" href="{% url 'app_RRHH:editar' empleado.id %}">Editar</a></td>
-            <td><a class="btn btn-outline-primary" href="{% url 'app_RRHH:edit' empleado.id %}">Editar 2</a></td>
-            <td><a class="btn btn-outline-primary" href="{% url 'app_RRHH:delete' empleado.id %}">Eliminar</a></td>
+            <td>{{ empleados.nombre }} {{ empleado.apellido }}</td>
+            <td>{{ empleados.sexo }}</td>
+            <td>{{ empleados.activo }}</td>
+            <td>{{ empleados.puesto }}</td>
+            <td>{{ empleados.edad_persona }}</td>
+            <td><a class="btn btn-outline-primary" href="{% url 'app_RRHH:detalle' empleados.id %}">Detalle</a></td>
+            <td><a class="btn btn-outline-primary" href="{% url 'app_RRHH:editar' empleados.id %}">Editar</a></td>
+            <td><a class="btn btn-outline-primary" href="{% url 'app_RRHH:edit' empleados.id %}">Editar 2</a></td>
+            <td><a class="btn btn-outline-primary" href="{% url 'app_RRHH:delete' empleados.id %}">Eliminar</a></td>
         </tr>
         {% endfor %}
     </tbody>

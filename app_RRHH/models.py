@@ -1,4 +1,4 @@
-from pyexpat import model
+from datetime import datetime, date
 from django.db import models
 
 # Create your models here.
@@ -38,3 +38,11 @@ class Empleado(models.Model):
             return f'Empleado {self.nombre} {self.apellido} - Area: {self.puesto.puesto_laboral}'
         else:
             return f'Persona {self.nombre} {self.apellido} - No Activo(a)'
+
+    def edad_persona(self):
+        hoy = date.today()
+        edad = date.today().year - self.fec_nac.year
+        if (hoy.month, hoy.day) < (self.fec_nac.month, self.fec_nac.day):
+            return edad - 1
+        else:
+            return edad
